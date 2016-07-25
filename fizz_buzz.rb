@@ -10,16 +10,20 @@
 #
 # 完成后，请把作业上传至github，链接请发slack私信。
 # 下次课程将进行统一检查。
-def fizz_buzz personCount
-  (1..personCount).each do |index|
-    if(index%3 == 0 && index%5 ==0)
-      p 'FizzBuzz'
-    elsif (index%3 == 0)
+def fizz_buzz params
+  if params.is_a?(Numeric)
+    if params%3 == 0
       p 'Fizz'
-    else
+    elsif params%5 == 0
+      p 'Buzz'
+    end
+  elsif params.is_a?(String)
+    if params.index('3') != nil
+      p 'Fizz'
+    elsif params.index('5') != nil
       p 'Buzz'
     end
   end
 end
 
-fizz_buzz ARGV[0].to_i
+fizz_buzz 'abc5'
