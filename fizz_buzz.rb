@@ -22,4 +22,4 @@ def fizz_buzz personCount
   end
 end
 
-fizz_buzz 50
+fizz_buzz ARGV[0].to_i
