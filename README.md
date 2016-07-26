@@ -1,2 +1,2 @@
-# to run this script
-#ruby fizz_buzz.rb 50
+#How to run this script
+｀ruby fizz_buzz.rb｀
