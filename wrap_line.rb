@@ -1,7 +1,7 @@
 def wrap text, maxCol
   characters = text.split(' ')
 
-  current_line = "a"
+  current_line = ""
   texts = []
   while characters.length > 0
       word = characters.shift
@@ -14,6 +14,9 @@ def wrap text, maxCol
       texts.push(word)
       current_line = texts.join(' ')
   end
+
+  puts current_line if texts.length > 0
+
 end
 
 wrap "you are my best friends", 10
