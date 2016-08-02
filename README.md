@@ -1,2 +1,3 @@
 #How to run this script
-｀ruby fizz_buzz.rb｀
+｀ruby lib/fizz_buzz.rb｀
+ `ruby lib/wrap_line.rb`
