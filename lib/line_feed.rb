@@ -1,14 +1,14 @@
 class LineFeed
     def wrap text, maxCol
       characters = text.split(' ')
-
+      final_texts = []
       current_line = ""
       texts = []
       while characters.length > 0
           word = characters.shift
 
           if current_line.length + word.length + 1 > maxCol
-            puts current_line
+            final_texts.push(current_line)
             texts = []
           end
 
@@ -16,8 +16,7 @@ class LineFeed
           current_line = texts.join(' ')
       end
 
-      puts current_line if texts.length > 0
-
+      final_texts.push(current_line) if texts.length > 0
+      final_texts.join('\n')
     end
 end
-wrap "you are my best friends", 10
