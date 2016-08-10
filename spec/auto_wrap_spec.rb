@@ -1,39 +1,60 @@
 require 'spec_helper'
+require "minitest/autorun"
 
-describe 'Line Feed' do
-	context '#wrap' do
-		it 'should not include line feed when the length of it is less than the limit' do
-			result = lineFeed.wrap "you are my", 10
+describe 'Auto wrap' do
+	before do
+		@auto_wrap = AutoWrap.new
+	end
+
+	describe 'when the length of it is less than the limit'  do
+		it 'should not include line feed' do
+			result = @auto_wrap.wrap "you are my", 10
 			expect(result).to eq "you are my"
 		end
+	end
 
-		it 'should include line feed when the length of it exceeds the limit' do
-			result = lineFeed.wrap "you are my best friends", 10
+	describe 'when the length of it exceeds the limit' do
+		it 'should include line feed' do
+			result = @auto_wrap.wrap "you are my best friends", 10
 			expect(result).to eq "you are my\\nbest\\nfriends"
 		end
+	end
 
-		it 'should be empty when text is empty' do
-			result = lineFeed.wrap "", 10
+	describe 'when text is empty' do
+		it 'should be empty' do
+			result = @auto_wrap.wrap "", 10
 			expect(result).to eq ""
 		end
+	end
 
-		it 'should be empty when text is empty' do
-			result = lineFeed.wrap "", 10
+	describe 'when text is empty' do
+		it 'should be empty' do
+			result = @auto_wrap.wrap "", 10
 			expect(result).to eq ""
 		end
+	end
 
-		it 'should get ArgumentError error when maxCol is string' do
+	describe 'when maxCol is string' do
+		it 'should get ArgumentError error' do
 			expect {
-				lineFeed.wrap "", "10"
+				@auto_wrap.wrap "", "10"
 			}.to raise_error(ArgumentError)
 		end
+	end
 
-		it 'should get ArgumentError error when maxCol is less than 1' do
+	describe 'when maxCol is less than 1' do
+		it 'should get ArgumentError error' do
 			expect {
-				lineFeed.wrap "", 0
+				@auto_wrap.wrap "", 0
 			}.to raise_error(ArgumentError)
 		end
+	end
 
-		let(:lineFeed){ LineFeed.new }
+	describe 'when the length of one word in sentence already exceeds the max column' do
+		it 'should get ArgumentError error' do
+			expect {
+				@auto_wrap.wrap "you are my best friends", 5
+			}.to raise_error(ArgumentError)
+		end
 	end
 end
