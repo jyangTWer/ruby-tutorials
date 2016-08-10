@@ -1,16 +1,26 @@
 begin
-	require 'fileutils'
+	namespace :test do 
+		require 'fileutils'
 
-	desc 'run all test firstly'
-	task :test do
-	  sh %{ rspec spec/ }
+		desc 'run all test'
+		task :all => [:auto_wrap, :numbers_to_words]
+
+		desc 'run test:fizz_buzz'
+		task :fizz_buzz do
+			sh %{ rspec spec/}
+		end
+
+		desc 'run test:auto_wrap'
+		task :auto_wrap do
+		  sh %{ rspec spec/line_feed_spec.rb }
+		end
+
+		desc 'run test:numbers_to_words'
+		task :numbers_to_words do
+			sh %{ rspec spec/number_spec.rb }
+		end
 	end
 
-	desc 'run number main already run test'
-	task :number_main => :test do
-		sh %{ ruby lib/number_main.rb }
-	end
-
-	task :default => :number_main
-rescue LoadError
+	desc 'run namespace'
+	task :test => ["test:all"]	
 end
