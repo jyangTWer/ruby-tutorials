@@ -1,5 +1,4 @@
 require 'spec_helper'
-require "minitest/autorun"
 
 describe 'Number' do
 	before do

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require "minitest/autorun"
 
 describe 'Auto wrap' do
 	before do
