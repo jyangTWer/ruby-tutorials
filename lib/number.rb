@@ -49,7 +49,7 @@ class Number
 				words.push(MAPPING[last_two_number])
 			else
 				words.push(MAPPING[last_two_number-digt_place])
-				words.push(MAPPING[digt_place]) if digt_place > 1
+				words.push(MAPPING[digt_place]) if digt_place > 0
 			end
 		end
 		words
