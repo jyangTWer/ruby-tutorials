@@ -1,2 +1,3 @@
-require_relative('../lib/line_feed')
-require_relative('../lib/number')
+require 'rspec'
+require 'line_feed'
+require 'number'

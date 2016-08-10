@@ -1,4 +1,4 @@
-require_relative('number')
+require 'number'
 
 number = Number.new
 loop do
