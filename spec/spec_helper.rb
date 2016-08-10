@@ -1,3 +1,3 @@
 require 'rspec'
-require 'line_feed'
+require 'auto_wrap'
 require 'number'

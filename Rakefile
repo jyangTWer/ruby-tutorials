@@ -12,7 +12,7 @@ begin
 
 		desc 'run test:auto_wrap'
 		task :auto_wrap do
-		  sh %{ rspec spec/line_feed_spec.rb }
+		  sh %{ rspec spec/auto_wrap_spec.rb }
 		end
 
 		desc 'run test:numbers_to_words'

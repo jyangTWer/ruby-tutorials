@@ -1,4 +1,4 @@
-class LineFeed
+class AutoWrap
     def wrap text, maxCol
         raise ArgumentError, 'Please enter a positive number' if maxCol.is_a?(String) || maxCol < 1
         words = text.split(' ')
@@ -16,6 +16,7 @@ class LineFeed
         current_line = ""
         texts = []
         words.each do |word|
+            raise ArgumentError, 'Length of one word already exceeds the max length' if word.length > maxCol
             if current_line.length + word.length + 1 > maxCol
                 final_texts.push(current_line)
                 texts = []
