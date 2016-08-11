@@ -3,7 +3,7 @@ begin
 		require 'fileutils'
 
 		desc 'run all test'
-		task :all => [:auto_wrap, :numbers_to_words]
+		task :all => [:fizz_buzz, :auto_wrap, :numbers_to_words]
 
 		desc 'run test:fizz_buzz'
 		task :fizz_buzz do
@@ -22,5 +22,8 @@ begin
 	end
 
 	desc 'run namespace'
-	task :test => ["test:all"]	
+	task :test => ["test:all"]
+
+	desc 'run default'
+	task :default => :test
 end
