@@ -5,8 +5,13 @@ class FizzBuzzTest < Minitest::Test
 		@fizz_buzz = FizzBuzz.new
 	end
 
-	def test_that_it_should_not_include_line_feed_when_the_length_of_it_is_less_than_the_limit
+	def test_that_it_outputs_fizz_when_three_is_an_aliquot_part_of_number
 		result = @fizz_buzz.generate 3
 		assert_equal "1 2 Fizz", result
+	end
+
+	def test_that_it_outputs_fizz_when_a_string_contains_three_character
+		result = @fizz_buzz.generate "containes 3 character"
+		assert_equal "Fizz", result
 	end
 end

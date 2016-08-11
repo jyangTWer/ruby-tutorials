@@ -11,9 +11,9 @@
 # 完成后，请把作业上传至github，链接请发slack私信。
 # 下次课程将进行统一检查。
 class FizzBuzz
-    def generate count_of_students
+    def generate counts
         results = []
-        (1..count_of_students).each do |count|
+        (1..counts).each do |count|
             if count.is_a?(Numeric)
                 if is_fizz count
                     results.push 'Fizz'
@@ -22,12 +22,13 @@ class FizzBuzz
                 else
                     results.push count
                 end
-            elsif count.is_a?(String)
-                if count.index('3') != nil
-                    p 'Fizz'
-                elsif count.index('5') != nil
-                    p 'Buzz'
-                end
+            end
+        end if counts.to_i != 0
+
+        if counts.is_a?(String)
+            results.push 'Fizz' if is_fizz_for_string counts
+            if counts.index('5')
+                p 'Buzz'
             end
         end
         results.join(' ')
@@ -35,6 +36,11 @@ class FizzBuzz
 
     def is_fizz number
         return true if number%3 == 0
+        false
+    end
+
+    def is_fizz_for_string number
+        return true if number.index('3')
         false
     end
 end
