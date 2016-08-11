@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative 'spec_helper'
 
 class FizzBuzzTest < Minitest::Test
 	def setup

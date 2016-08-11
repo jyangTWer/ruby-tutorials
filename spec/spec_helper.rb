@@ -1,5 +1,5 @@
 require 'rspec'
 require "minitest/autorun"
-require 'auto_wrap'
-require 'number'
-require 'fizz_buzz'
+require_relative '../lib/auto_wrap'
+require_relative '../lib/number'
+require_relative '../lib/fizz_buzz'
