@@ -25,9 +25,7 @@ class FizzBuzz
 
         if count.is_a?(String)
             result = 'Fizz' if is_fizz_for_string count
-            if count.index('5')
-                p 'Buzz'
-            end
+            result = 'Buzz' if is_buzz_for_string count
         end
         result
     end
@@ -44,6 +42,11 @@ class FizzBuzz
 
     def is_fizz_for_string number
         return true if number.index('3')
+        false
+    end
+
+    def is_buzz_for_string number
+        return true if number.index('5')
         false
     end
 end
