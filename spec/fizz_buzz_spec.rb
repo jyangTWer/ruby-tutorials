@@ -14,4 +14,9 @@ class FizzBuzzTest < Minitest::Test
 		result = @fizz_buzz.generate "containes 3 character"
 		assert_equal "Fizz", result
 	end
+
+	def test_that_it_outputs_buzz_when_five_is_an_aliquot_part_of_number
+		result = @fizz_buzz.generate 10
+		assert_equal "Buzz", result
+	end
 end

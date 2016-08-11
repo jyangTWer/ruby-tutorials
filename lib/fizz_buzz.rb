@@ -16,8 +16,8 @@ class FizzBuzz
         if count.is_a?(Numeric)
             if is_fizz count
                 result = 'Fizz'
-            elsif count%5 == 0
-                p 'Buzz'
+            elsif is_buzz count
+                result = 'Buzz'
             else
                 result = count
             end
@@ -34,6 +34,11 @@ class FizzBuzz
 
     def is_fizz number
         return true if number%3 == 0
+        false
+    end
+
+    def is_buzz number
+        return true if number%5 == 0
         false
     end
 
