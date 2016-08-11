@@ -1,6 +1,7 @@
 class AutoWrap
     def wrap text, maxCol
-        raise ArgumentError, 'Please enter a positive number' if maxCol.is_a?(String) || maxCol < 1
+        maxCol = maxCol.to_i
+        raise ArgumentError, 'Please enter a reasonable maxCol' if maxCol==0
         words = text.split(' ')
         concate_sentence_with_line_feed words, maxCol
     end

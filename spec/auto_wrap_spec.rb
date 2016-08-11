@@ -5,6 +5,13 @@ describe 'Auto wrap' do
 		@auto_wrap = AutoWrap.new
 	end
 
+	describe 'when only have one word'  do
+		it 'should not include line feed' do
+			result = @auto_wrap.wrap "you", "10"
+			expect(result).to eq "you"
+		end
+	end
+
 	describe 'when the length of it is less than the limit'  do
 		it 'should not include line feed' do
 			result = @auto_wrap.wrap "you are my", 10
@@ -30,14 +37,6 @@ describe 'Auto wrap' do
 		it 'should be empty' do
 			result = @auto_wrap.wrap "", 10
 			expect(result).to eq ""
-		end
-	end
-
-	describe 'when maxCol is string' do
-		it 'should get ArgumentError error' do
-			expect {
-				@auto_wrap.wrap "", "10"
-			}.to raise_error(ArgumentError)
 		end
 	end
 
