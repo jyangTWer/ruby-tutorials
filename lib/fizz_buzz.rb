@@ -12,8 +12,8 @@
 # 下次课程将进行统一检查。
 class FizzBuzz
     def generate count
-        fizz = is_fizz count
-        buzz = is_buzz count
+        fizz = containes count, 3
+        buzz = containes count, 5
         fizz_or_buzz_or_count fizz, buzz, count
     end
 
@@ -30,22 +30,12 @@ class FizzBuzz
         result
     end
 
-    def is_fizz number
-        can_be_fizz = false
-        if number.is_a?(Numeric)
-            can_be_fizz = true if number%3 == 0
-        else
-            can_be_fizz = true if number.index('3')
-        end
-        can_be_fizz
-    end
-
-    def is_buzz number
+    def containes src, keyword
         can_be_buzz = false
-        if number.is_a?(Numeric)
-            can_be_buzz = true if number%5 == 0
+        if src.is_a?(Numeric)
+            can_be_buzz = true if src%keyword == 0
         else
-            can_be_buzz = true if number.index('5')
+            can_be_buzz = true if src.index(keyword.to_s)
         end
         can_be_buzz
     end
