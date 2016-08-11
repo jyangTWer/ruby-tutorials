@@ -12,41 +12,41 @@
 # 下次课程将进行统一检查。
 class FizzBuzz
     def generate count
-        result = ''
-        if count.is_a?(Numeric)
-            if is_fizz count
-                result = 'Fizz'
-            elsif is_buzz count
-                result = 'Buzz'
-            else
-                result = count
-            end
-        end
+        fizz = is_fizz count
+        buzz = is_buzz count
+        fizz_or_buzz_or_count fizz, buzz, count
+    end
 
-        if count.is_a?(String)
-            result = 'Fizz' if is_fizz_for_string count
-            result = 'Buzz' if is_buzz_for_string count
+    def fizz_or_buzz_or_count fizz, buzz, count
+        result=0
+        if fizz && buzz
+            result = "FizzBuzz"
+        elsif !fizz && !buzz
+            result = count
+        else
+            result = 'Fizz' if fizz
+            result = 'Buzz' if buzz
         end
         result
     end
 
     def is_fizz number
-        return true if number%3 == 0
-        false
+        can_be_fizz = false
+        if number.is_a?(Numeric)
+            can_be_fizz = true if number%3 == 0
+        else
+            can_be_fizz = true if number.index('3')
+        end
+        can_be_fizz
     end
 
     def is_buzz number
-        return true if number%5 == 0
-        false
-    end
-
-    def is_fizz_for_string number
-        return true if number.index('3')
-        false
-    end
-
-    def is_buzz_for_string number
-        return true if number.index('5')
-        false
+        can_be_buzz = false
+        if number.is_a?(Numeric)
+            can_be_buzz = true if number%5 == 0
+        else
+            can_be_buzz = true if number.index('5')
+        end
+        can_be_buzz
     end
 end
