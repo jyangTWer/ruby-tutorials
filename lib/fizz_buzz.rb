@@ -10,20 +10,31 @@
 #
 # 完成后，请把作业上传至github，链接请发slack私信。
 # 下次课程将进行统一检查。
-def fizz_buzz params
-  if params.is_a?(Numeric)
-    if params%3 == 0
-      p 'Fizz'
-    elsif params%5 == 0
-      p 'Buzz'
+class FizzBuzz
+    def generate count_of_students
+        results = []
+        (1..count_of_students).each do |count|
+            if count.is_a?(Numeric)
+                if is_fizz count
+                    results.push 'Fizz'
+                elsif count%5 == 0
+                    p 'Buzz'
+                else
+                    results.push count
+                end
+            elsif count.is_a?(String)
+                if count.index('3') != nil
+                    p 'Fizz'
+                elsif count.index('5') != nil
+                    p 'Buzz'
+                end
+            end
+        end
+        results.join(' ')
     end
-  elsif params.is_a?(String)
-    if params.index('3') != nil
-      p 'Fizz'
-    elsif params.index('5') != nil
-      p 'Buzz'
-    end
-  end
-end
 
-fizz_buzz 'abc5'
+    def is_fizz number
+        return true if number%3 == 0
+        false
+    end
+end

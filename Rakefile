@@ -7,7 +7,7 @@ begin
 
 		desc 'run test:fizz_buzz'
 		task :fizz_buzz do
-			sh %{ rspec spec/}
+			sh %{ rspec spec/fizz_buzz_spec.rb}
 		end
 
 		desc 'run test:auto_wrap'
