@@ -9,7 +9,7 @@ class AutoWrap
     def concate_sentence_with_line_feed words, maxCol
         line_feed_texts = []
         line_feed_texts = get_sentence words, maxCol
-        line_feed_texts.join('\n')
+        line_feed_texts.join("\n")
     end
 
     def get_sentence words, maxCol
@@ -23,7 +23,7 @@ class AutoWrap
                 texts = []
             end
             texts.push(word)
-            current_line = texts.join(' ')
+            current_line = texts.join(" ")
         end
         final_texts.push(current_line) if texts.length > 0
         final_texts

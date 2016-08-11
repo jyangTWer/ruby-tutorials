@@ -22,7 +22,7 @@ describe 'Auto wrap' do
 	describe 'when the length of it exceeds the limit' do
 		it 'should include line feed' do
 			result = @auto_wrap.wrap "you are my best friends", 10
-			expect(result).to eq "you are my\\nbest\\nfriends"
+			expect(result).to eq "you are my\nbest\nfriends"
 		end
 	end
 
