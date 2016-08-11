@@ -7,7 +7,7 @@ class FizzBuzzTest < Minitest::Test
 
 	def test_that_it_outputs_fizz_when_three_is_an_aliquot_part_of_number
 		result = @fizz_buzz.generate 3
-		assert_equal "1 2 Fizz", result
+		assert_equal "Fizz", result
 	end
 
 	def test_that_it_outputs_fizz_when_a_string_contains_three_character
