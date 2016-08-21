@@ -51,12 +51,22 @@ describe 'Number' do
 			result = @number.num_to_words "9876"
 			expect(result).to eq "nine thousand (and) eight hundred (and) seventy six dollars."
 		end
+
+		it "only has thousand" do
+			result = @number.num_to_words "9000"
+			expect(result).to eq "nine thousand dollars."
+		end
 	end
 
 	describe 'when has seven digit' do
 		it "must start with million" do
 			result = @number.num_to_words "4359876"
 			expect(result).to eq "four million (and) three hundred (and) fifty nine thousand (and) eight hundred (and) seventy six dollars."
+		end
+
+		it "only has million" do
+			result = @number.num_to_words "4000006"
+			expect(result).to eq "four million (and) six dollars."
 		end
 	end
 
@@ -65,12 +75,22 @@ describe 'Number' do
 			result = @number.num_to_words "1234359876"
 			expect(result).to eq "one billion (and) two hundred (and) thirty four million (and) three hundred (and) fifty nine thousand (and) eight hundred (and) seventy six dollars."
 		end
+
+		it "only has billion" do
+			result = @number.num_to_words "1000000006"
+			expect(result).to eq "one billion (and) six dollars."
+		end
 	end
 
 	describe 'when has thirteen digit' do
 		it "must start with trillion" do
 			result = @number.num_to_words "8261234359876"
 			expect(result).to eq "eight trillion (and) two hundred (and) sixty one billion (and) two hundred (and) thirty four million (and) three hundred (and) fifty nine thousand (and) eight hundred (and) seventy six dollars."
+		end
+
+		it "only has trillion" do
+			result = @number.num_to_words "8000000000006"
+			expect(result).to eq "eight trillion (and) six dollars."
 		end
 	end
 end

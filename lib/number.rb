@@ -12,8 +12,8 @@ class Number
 			groups = get_a_group_number_with_three_digits part
 			words.push('(and)') if words.length > 0 && groups.length > 0
 			words = words + groups
-			if index < length_of_parts - 1
-				words.push(UNITS[length_of_parts-index-1]) 
+			if index < length_of_parts - 1 && !UNITS.has_value?(words[-1])
+				words.push(UNITS[length_of_parts-index-1])
 			end
 		end
 		return "You need to input number" if words.length == 0
