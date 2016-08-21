@@ -1,97 +1,97 @@
 require 'spec_helper'
 
-describe 'Number' do
-	before do
+class NumberTest < Minitest::Test
+	def setup
 		@number = Number.new
 	end
 
-	describe 'when has one digit' do
-		it "must be two words" do
-			result = @number.num_to_words "3"
+	def test_that_it_must_be_two_words_when_has_one_digit
+		result = @number.num_to_words "3"
 
-			expect(result).to eq "three dollars."
-		end
+		assert_equal "three dollars.", result
 	end
 
-	describe 'when has two digit' do
-		it "must be two words with decade digit" do
-			result = @number.num_to_words "13"
-			expect(result).to eq "thirteen dollars."
-		end
+	def test_that_it_must_be_two_words_with_decade_digit_when_has_two_digit
+		result = @number.num_to_words "13"
 
-		it "must be two words without decade digit" do
-			result = @number.num_to_words "04"
-			expect(result).to eq "four dollars."
-		end
+		assert_equal "thirteen dollars.", result
 	end
 
-	describe 'when has three digit' do
-		it "must start with hundred" do
-			result = @number.num_to_words "123"
-			expect(result).to eq "one hundred (and) twenty three dollars."
-		end
+	def test_that_it_must_be_two_words_without_decade_digit_when_has_two_digit
+		result = @number.num_to_words "04"
 
-		it "must be five words without decade" do
-			result = @number.num_to_words "402"
-			expect(result).to eq "four hundred (and) two dollars."
-		end
-
-		it "must be five words without decade" do
-			result = @number.num_to_words "700"
-			expect(result).to eq "seven hundred dollars."
-		end
+		assert_equal "four dollars.", result
 	end
 
-	describe 'when has four digit' do
-		it "must be five words without decade and hundred's place" do
-			result = @number.num_to_words "1003"
-			expect(result).to eq "one thousand (and) three dollars."
-		end
+	def test_that_it_must_start_with_hundred_when_has_three_digit
+		result = @number.num_to_words "123"
 
-		it "must start with thousand" do
-			result = @number.num_to_words "9876"
-			expect(result).to eq "nine thousand (and) eight hundred (and) seventy six dollars."
-		end
-
-		it "only has thousand" do
-			result = @number.num_to_words "9000"
-			expect(result).to eq "nine thousand dollars."
-		end
+		assert_equal "one hundred (and) twenty three dollars.", result
 	end
 
-	describe 'when has seven digit' do
-		it "must start with million" do
-			result = @number.num_to_words "4359876"
-			expect(result).to eq "four million (and) three hundred (and) fifty nine thousand (and) eight hundred (and) seventy six dollars."
-		end
+	def test_that_it_must_be_five_words_without_decade_when_has_three_digit
+		result = @number.num_to_words "402"
 
-		it "only has million" do
-			result = @number.num_to_words "4000006"
-			expect(result).to eq "four million (and) six dollars."
-		end
+		assert_equal "four hundred (and) two dollars.", result
 	end
 
-	describe 'when has ten digit' do
-		it "must start with billion" do
-			result = @number.num_to_words "1234359876"
-			expect(result).to eq "one billion (and) two hundred (and) thirty four million (and) three hundred (and) fifty nine thousand (and) eight hundred (and) seventy six dollars."
-		end
+	def test_that_it_must_be_three_words_without_decade_and_unit_when_has_three_digit
+		result = @number.num_to_words "700"
 
-		it "only has billion" do
-			result = @number.num_to_words "1000000006"
-			expect(result).to eq "one billion (and) six dollars."
-		end
+		assert_equal "seven hundred dollars.", result
 	end
 
-	describe 'when has thirteen digit' do
-		it "must start with trillion" do
-			result = @number.num_to_words "8261234359876"
-			expect(result).to eq "eight trillion (and) two hundred (and) sixty one billion (and) two hundred (and) thirty four million (and) three hundred (and) fifty nine thousand (and) eight hundred (and) seventy six dollars."
-		end
+	def test_that_it_must_be_five_words_without_decade_and_hundreds_place_when_has_four_digit
+		result = @number.num_to_words "1003"
 
-		it "only has trillion" do
-			result = @number.num_to_words "8000000000006"
-			expect(result).to eq "eight trillion (and) six dollars."
-		end
+		assert_equal "one thousand (and) three dollars.", result
+	end
+
+	def test_that_it_must_start_with_thousand_when_has_four_digit
+		result = @number.num_to_words "9876"
+
+		assert_equal "nine thousand (and) eight hundred (and) seventy six dollars.", result
+	end
+
+	def test_that_it_only_has_thousand_when_has_four_digit
+		result = @number.num_to_words "9000"
+
+		assert_equal "nine thousand dollars.", result
+	end
+
+	def test_that_it_must_start_with_million_when_has_seven_digit
+		result = @number.num_to_words "4359876"
+
+		assert_equal "four million (and) three hundred (and) fifty nine thousand (and) eight hundred (and) seventy six dollars.", result
+	end
+
+	def test_that_it_only_has_million_when_has_seven_digit
+		result = @number.num_to_words "4000006"
+
+		assert_equal "four million (and) six dollars.", result
+	end
+
+	def test_that_it_must_start_with_billion_when_has_ten_digit
+		result = @number.num_to_words "1234359876"
+
+		assert_equal "one billion (and) two hundred (and) thirty four million (and) three hundred (and) fifty nine thousand (and) eight hundred (and) seventy six dollars.", result
+	end
+
+	def test_that_it_only_has_billion_when_has_ten_digit
+		result = @number.num_to_words "1000000006"
+
+		assert_equal "one billion (and) six dollars.", result
+	end
+
+	def test_that_it_must_start_with_trillion_when_has_thirteen_digit
+		result = @number.num_to_words "8261234359876"
+
+		assert_equal "eight trillion (and) two hundred (and) sixty one billion (and) two hundred (and) thirty four million (and) three hundred (and) fifty nine thousand (and) eight hundred (and) seventy six dollars.", result
+	end
+
+	def test_that_it_only_has_trillion_when_has_thirteen_digit
+		result = @number.num_to_words "8000000000006"
+
+		assert_equal "eight trillion (and) six dollars.", result
 	end
 end
