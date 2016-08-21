@@ -8,6 +8,7 @@ describe 'Number' do
 	describe 'when has one digit' do
 		it "must be two words" do
 			result = @number.num_to_words "3"
+
 			expect(result).to eq "three dollars."
 		end
 	end
