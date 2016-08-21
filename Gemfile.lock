@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    byebug (8.2.0)
     diff-lcs (1.2.5)
     minitest (5.8.4)
     rake (11.2.2)
@@ -22,6 +23,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   minitest
   rake
   rspec
