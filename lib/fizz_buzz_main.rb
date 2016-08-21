@@ -1,4 +1,4 @@
-require_relative 'fizz_buzz'
+require './fizz_buzz'
 
 fizz_buzz = FizzBuzz.new
 loop do

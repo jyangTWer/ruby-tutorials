@@ -1,4 +1,4 @@
-require 'number'
+require './number'
 
 number = Number.new
 loop do
