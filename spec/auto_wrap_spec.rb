@@ -1,58 +1,53 @@
 require 'spec_helper'
 
-describe 'Auto wrap' do
-	before do
+class AutoWrapTest < Minitest::Test
+	def setup
 		@auto_wrap = AutoWrap.new
 	end
 
-	describe 'when only have one word'  do
-		it 'should not include line feed' do
-			result = @auto_wrap.wrap "you", "10"
-			expect(result).to eq "you"
-		end
+	def test_that_it_should_not_include_line_feed_when_only_have_one_word
+		result = @auto_wrap.wrap "you", "10"
+
+		assert_equal "you", result
 	end
 
-	describe 'when the length of it is less than the limit'  do
-		it 'should not include line feed' do
-			result = @auto_wrap.wrap "you are my", 10
-			expect(result).to eq "you are my"
-		end
+	def test_that_it_should_not_include_line_feed_when_the_length_of_it_is_less_than_the_limit
+		result = @auto_wrap.wrap "you are my", 10
+
+		assert_equal "you are my", result
 	end
 
-	describe 'when the length of it exceeds the limit' do
-		it 'should include line feed' do
-			result = @auto_wrap.wrap "you are my best friends", 10
-			expect(result).to eq "you are my\nbest\nfriends"
-		end
+	def test_that_when_the_length_of_it_exceeds_the_limit_should_include_line_feed
+		result = @auto_wrap.wrap "you are my best friends", 10
+
+		assert_equal "you are my\nbest\nfriends", result
 	end
 
-	describe 'when text is empty' do
-		it 'should be empty' do
-			result = @auto_wrap.wrap "", 10
-			expect(result).to eq ""
-		end
+	def test_that_when_text_is_empty_should_be_empty
+		result = @auto_wrap.wrap "", 10
+
+		assert_equal "", result
 	end
 
-	describe 'when text is empty' do
-		it 'should be empty' do
-			result = @auto_wrap.wrap "", 10
-			expect(result).to eq ""
-		end
+	def test_that_when_text_is_empty_should_be_empty
+		result = @auto_wrap.wrap "", 10
+
+		assert_equal "", result
 	end
 
-	describe 'when maxCol is less than 1' do
-		it 'should get ArgumentError error' do
-			expect {
-				@auto_wrap.wrap "", 0
-			}.to raise_error(ArgumentError)
+	def test_that_when_maxCol_is_less_than_1_should_get_ArgumentError_error
+		err = assert_raises ArgumentError do
+			@auto_wrap.wrap("", 0)
 		end
+		
+		assert_equal 'Please enter a reasonable maxCol', err.message
 	end
 
-	describe 'when the length of one word in sentence already exceeds the max column' do
-		it 'should get ArgumentError error' do
-			expect {
-				@auto_wrap.wrap "you are my best friends", 5
-			}.to raise_error(ArgumentError)
+	def test_that_when_the_length_of_one_word_in_sentence_already_exceeds_the_max_column_should_get_ArgumentError_error
+		err = assert_raises ArgumentError do
+			@auto_wrap.wrap "you are my best friends", 5
 		end
+
+		assert_equal "Length of one word already exceeds the max length", err.message
 	end
 end
